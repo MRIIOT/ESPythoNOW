@@ -27,7 +27,7 @@ git clone https://$(cat ~/secret.ghuser):$(cat ~/secret.ghpat)@github.com/MRIIOT
 ## build image
 
 ```
-export BUILD_VERSION=0.0.001
+export BUILD_VERSION=0.0.002
 docker build -f ~/ESPythoNOW/Dockerfile --tag=ladder99/espythonow:latest --tag=ladder99/espythonow:$BUILD_VERSION ~/ESPythoNOW
 cat ~/secret.dhpass| docker login --username ladder99 --password-stdin
 docker push ladder99/espythonow --all-tags
@@ -40,5 +40,5 @@ docker logout
 docker compose \
   -f ~/ESPythoNOW/docker-compose.yml \
   --env-file ~/ESPythoNOW/.env \
-  up -d --force-recreate --no-deps espythonow
+  up -d --force-recreate
 ```

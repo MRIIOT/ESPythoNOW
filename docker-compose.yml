@@ -1,5 +1,3 @@
-version: "3.9"
-
 services:
   espythonow:
     hostname: espythonow
@@ -15,7 +13,7 @@ services:
       - /etc/timezone:/etc/timezone:ro
     environment:
       - PYTHONUNBUFFERED=1
-      - LOG_LEVEL=${API_LOG_LEVEL}
+      - LOG_LEVEL=20
       - INTERFACE=wlxc01c3038d5a8
     stop_grace_period: 10s
     stop_signal: SIGTERM
@@ -45,5 +43,5 @@ services:
         max-size: "20m"
 
 networks:
-  sharc:
+  espnow:
     name: espnow

@@ -1,4 +1,5 @@
 import scapy.all as scapy
+from scapy.all import conf
 import collections
 import random
 import time
@@ -38,6 +39,7 @@ class ESPythoNow:
     self.local_hw_mac        = self.hw_mac_as_str(self.interface)        # Interface's actual HW MAC
     self.block_on_broadcast  = False                                     # Enable block on BROADCAST send, disabled by default. Some ESP-NOW versions will send ACK when receiving BROADCAST
     self.prepared            = False                                     # Required tasks have been completed, or not
+    conf.use_pcap = True
 
 
 

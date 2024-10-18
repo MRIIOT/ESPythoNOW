@@ -21,6 +21,7 @@ FROM amd64/python:3.12-bullseye
 
 WORKDIR /app
 
+COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so /usr/lib/x86_64-linux-gnu/
 COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so.* /usr/lib/x86_64-linux-gnu/
 
 COPY --from=build /app /app

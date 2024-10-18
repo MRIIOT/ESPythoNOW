@@ -36,9 +36,31 @@ docker logout
 
 ## standup
 
+asdfasd
 ```
 docker compose \
   -f ~/ESPythoNOW/docker-compose.yml \
   --env-file ~/ESPythoNOW/.env \
   up -d --force-recreate
+```
+
+## running bare metal
+
+```angular
+sudo apt install git python3-venv net-tools
+
+git clone https://github.com/ChuckMash/ESPythoNOW.git
+cd ESPythoNOW
+python3 -m venv venv
+source venv/bin/activate
+pip install scapy
+sudo bash prep.sh wlo2 8
+
+# create sniff.py
+
+cp venv/bin/python3 venv/bin/python_netraw
+sudo chown $USER venv/bin/python_netraw
+chmod -x,u+x venv/bin/python_netraw
+sudo setcap cap_net_raw=eip venv/bin/python_netraw
+python_netraw sniff.py
 ```

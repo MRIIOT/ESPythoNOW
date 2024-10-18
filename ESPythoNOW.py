@@ -215,9 +215,10 @@ class ESPythoNow:
 
       # Construct packet
       # data = b"\x7f\x18\xfe\x34%s\xDD%s\x18\xfe\x34\x04\x01%s" % (random.randbytes(4), (5+len(msg_)).to_bytes(1, 'big'), msg_)
-      data = b"\x7f\x18\xfe\x34%b\xDD%b\x18\xfe\x34\x04\x01" % (
+      data = b"\x7f\x18\xfe\x34%b\xDD%b\x18\xfe\x34\x04\x01%s" % (
         random.randbytes(4),
-        (5 + len(msg_)).to_bytes(1, 'big'))
+        (5 + len(msg_)).to_bytes(1, 'big'),
+        msg_)
 
       # ESP-NOW message will be sent encrypted
       if self.encrypted:

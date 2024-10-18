@@ -9,7 +9,7 @@ services:
     # privileged: true
     cap_add:
       - NET_RAW
-      - NET_ADMIN
+      #- NET_ADMIN
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro

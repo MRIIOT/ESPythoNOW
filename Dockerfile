@@ -19,6 +19,9 @@ COPY . .
 # RUN STAGE
 FROM amd64/python:3.12-slim-bullseye
 
+RUN apt-get update -q && \
+    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap libpcap-dev
+
 WORKDIR /app
 
 COPY --from=build /app /app

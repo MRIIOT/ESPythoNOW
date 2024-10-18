@@ -1,2 +1,3 @@
 scapy~=2.6.0
 python-libpcap~=0.5.2
+libpcap~=1.11.0b12

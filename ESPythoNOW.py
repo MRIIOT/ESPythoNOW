@@ -98,7 +98,12 @@ class ESPythoNow:
 
     self.startup_event.clear()
 
-    self.listener = scapy.AsyncSniffer(iface=self.interface, prn=self.parse_rx_packet, filter=self.filter, started_callback=lambda: self.startup_event.set())
+    self.listener = scapy.AsyncSniffer(
+      iface=self.interface, 
+      prn=self.parse_rx_packet,
+      filter=self.filter,
+      started_callback=lambda: self.send("FF:FF:FF:FF:FF:FF", b"sniffer alive"))
+      # started_callback=lambda: self.startup_event.set())
     self.listener.start()
 
     if self.startup_event.wait(timeout=1):

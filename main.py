@@ -13,5 +13,5 @@ print("sniffing packets")
 
 while True:
     print("send packet")
-    espnow.send("FF:FF:FF:FF:FF:FF", "hello from docker")
+    espnow.send("FF:FF:FF:FF:FF:FF", b"hello from docker")
     time.sleep(3)

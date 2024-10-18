@@ -101,10 +101,12 @@ class ESPythoNow:
     self.listener = scapy.AsyncSniffer(iface=self.interface, prn=self.parse_rx_packet, filter=self.filter, started_callback=lambda: self.startup_event.set())
     self.listener.start()
 
-    if self.startup_event.wait(timeout=1):
+    if self.startup_event.wait(timeout=5):
+      print(self.listener.running)
       return True
     else:
       print("Error starting listener")
+      print(self.listener.running)
       return False
 
 

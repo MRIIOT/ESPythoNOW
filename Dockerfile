@@ -1,5 +1,5 @@
 # BUILD STAGE
-FROM amd64/python:3.12-slim-bullseye as build
+FROM amd64/python:3.12-bullseye as build
 
 RUN apt-get update -q && \
     apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap libpcap-dev
@@ -17,10 +17,7 @@ RUN pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.tx
 COPY . .
 
 # RUN STAGE
-FROM amd64/python:3.12-slim-bullseye
-
-RUN apt-get update -q && \
-    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap libpcap-dev
+FROM amd64/python:3.12-bullseye
 
 WORKDIR /app
 

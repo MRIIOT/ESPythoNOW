@@ -6,7 +6,7 @@ services:
     restart: unless-stopped
     command: python3 -u main.py
     network_mode: host
-    privileged: true
+    # privileged: true
     cap_add:
       - NET_RAW
       - NET_ADMIN

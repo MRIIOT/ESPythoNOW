@@ -104,21 +104,15 @@ class ESPythoNow:
       iface=self.interface,
       prn=self.parse_rx_packet,
       filter=self.filter,
-      started_callback=lambda: self.send("FF:FF:FF:FF:FF:FF", b"sniffer alive"))
-      # started_callback=lambda: self.startup_event.set())
+      started_callback=lambda: self.startup_event.set())
     self.listener.start()
     print(self.listener.exception)
-    time.sleep(3)
-    print(self.listener.exception)
+    
     if self.startup_event.wait(timeout=1):
       print(self.listener.running)
       return True
     else:
       print("Error starting listener")
-      print(self.listener.running)
-      if self.listener.running is True:
-        return True
-
       return False
 
 

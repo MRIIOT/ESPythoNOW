@@ -6,8 +6,10 @@ services:
     restart: unless-stopped
     command: python3 -u main.py
     network_mode: host
+    privileged: true
     cap_add:
       - NET_RAW
+      - NET_ADMIN
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - /etc/timezone:/etc/timezone:ro

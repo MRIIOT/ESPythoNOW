@@ -2,7 +2,7 @@
 FROM amd64/python:3.12-bullseye as build
 
 RUN apt-get update -q && \
-    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap-dev
+    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap-dev tcpdump
 
 RUN python3 -m venv /venv
 
@@ -21,8 +21,7 @@ FROM amd64/python:3.12-bullseye
 
 WORKDIR /app
 
-COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so /usr/lib/x86_64-linux-gnu/
-COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so.* /usr/lib/x86_64-linux-gnu/
+COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so* /usr/lib/x86_64-linux-gnu/
 
 COPY --from=build /app /app
 

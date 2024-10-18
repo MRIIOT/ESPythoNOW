@@ -2,7 +2,7 @@
 FROM amd64/python:3.12-slim-bullseye as build
 
 RUN apt-get update -q && \
-    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap-dev
+    apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap libpcap-dev
 
 RUN python3 -m venv /venv
 

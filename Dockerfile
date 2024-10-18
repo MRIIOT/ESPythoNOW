@@ -1,5 +1,5 @@
 # BUILD STAGE
-FROM amd64/python:3.12-bullseye as build
+FROM amd64/python:3.12-bullseye AS build
 
 RUN apt-get update -q && \
     apt-get install -y --fix-missing --no-install-recommends gcc libc6-dev libpcap-dev tcpdump
@@ -17,15 +17,15 @@ RUN pip install --no-cache-dir --trusted-host pypi.python.org -r requirements.tx
 COPY . .
 
 # RUN STAGE
-FROM amd64/python:3.12-bullseye
+#FROM amd64/python:3.12-bullseye
 
-WORKDIR /app
+#WORKDIR /app
 
-COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so* /usr/lib/x86_64-linux-gnu/
+#COPY --from=build /usr/lib/x86_64-linux-gnu/libpcap.so* /usr/lib/x86_64-linux-gnu/
 
-COPY --from=build /app /app
+#COPY --from=build /app /app
 
-COPY --from=build /venv /venv
+#COPY --from=build /venv /venv
 
 ENV PATH=/venv/bin:$PATH
 
